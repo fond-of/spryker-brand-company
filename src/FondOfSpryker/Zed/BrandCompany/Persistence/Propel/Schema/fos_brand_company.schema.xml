@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<database
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    name="zed"
+    xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+    namespace="Orm\Zed\BrandCompany\Persistence"
+    package="src.Orm.Zed.BrandCompany.Persistence">
+
+    <table name="fos_brand_company" isCrossRef="true">
+        <column name="fk_brand" type="integer" primaryKey="true"/>
+        <column name="fk_company" type="integer" primaryKey="true"/>
+
+        <foreign-key name="fos_brand_company-fk_brand" foreignTable="fos_brand" onDelete="CASCADE">
+            <reference local="fk_brand" foreign="id_brand"/>
+        </foreign-key>
+
+        <foreign-key name="fos_brand_company-fk_company" foreignTable="spy_company" onDelete="CASCADE">
+            <reference local="fk_company" foreign="id_company"/>
+        </foreign-key>
+
+        <index name="fos_brand_company-fk_brand">
+            <index-column name="fk_brand"/>
+        </index>
+
+        <index name="fos_brand_company-fk_company">
+            <index-column name="fk_company"/>
+        </index>
+    </table>
+</database>
