@@ -4,7 +4,7 @@ namespace FondOfSpryker\Zed\BrandCompany\Business;
 
 use Generated\Shared\Transfer\CompanyBrandRelationTransfer;
 
-interface BrandCompanyBusinessFacadeInterface
+interface BrandCompanyFacadeInterface
 {
     /**
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer|null $companyBrandRelationTransfer

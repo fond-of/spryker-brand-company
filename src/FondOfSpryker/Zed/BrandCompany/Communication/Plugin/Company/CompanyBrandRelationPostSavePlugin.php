@@ -7,7 +7,7 @@ use Spryker\Zed\CompanyExtension\Dependency\Plugin\CompanyPostSavePluginInterfac
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
- * @method \FondOfSpryker\Zed\BrandCompany\Business\BrandCompanyBusinessFacadeInterface getFacade()
+ * @method \FondOfSpryker\Zed\BrandCompany\Business\BrandCompanyFacadeInterface getFacade()
  */
 class CompanyBrandRelationPostSavePlugin extends AbstractPlugin implements CompanyPostSavePluginInterface
 {
