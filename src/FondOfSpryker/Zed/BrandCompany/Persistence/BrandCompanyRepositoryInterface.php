@@ -2,6 +2,8 @@
 
 namespace FondOfSpryker\Zed\BrandCompany\Persistence;
 
+use ArrayObject;
+
 interface BrandCompanyRepositoryInterface
 {
     /**
@@ -11,7 +13,7 @@ interface BrandCompanyRepositoryInterface
      *
      * @param int $idCompany
      *
-     * @return \Generated\Shared\Transfer\BrandTransfer[]
+     * @return \Generated\Shared\Transfer\BrandTransfer[]|\ArrayObject
      */
-    public function getRelatedBrandsByCompanyId(int $idCompany): array;
+    public function getRelatedBrandsByCompanyId(int $idCompany): ArrayObject;
 }

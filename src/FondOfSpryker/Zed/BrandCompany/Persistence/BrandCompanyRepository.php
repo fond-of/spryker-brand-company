@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\BrandCompany\Persistence;
 
+use ArrayObject;
 use Generated\Shared\Transfer\BrandTransfer;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 
@@ -17,21 +18,26 @@ class BrandCompanyRepository extends AbstractRepository implements BrandCompanyR
      *
      * @param int $idCompany
      *
+     * @throws
+     *
      * @return \ArrayObject|\Generated\Shared\Transfer\BrandTransfer[]
      */
-    public function getRelatedBrandsByCompanyId(int $idCompany): array
+    public function getRelatedBrandsByCompanyId(int $idCompany): ArrayObject
     {
-        $companyBrandEntities = $this->getFactory()
+        $brandCompanyEntities = $this->getFactory()
             ->createBrandCompanyQuery()
             ->filterByFkCompany($idCompany)
             ->find();
 
-        $relatedBrands = [];
+        $relatedBrands = new ArrayObject();
 
-        foreach ($companyBrandEntities as $companyBrandEntity) {
+        foreach ($brandCompanyEntities as $brandCompanyEntity) {
+            $brandEntityTransfer = $brandCompanyEntity->getFosBrand();
+
             $brandTransfer = new BrandTransfer();
-            $brandTransfer->setIdBrand($companyBrandEntity->getFkBrand());
-            $relatedBrands[] = $brandTransfer;
+            $brandTransfer->fromArray($brandEntityTransfer->toArray(), true);
+
+            $relatedBrands->append($brandTransfer);
         }
 
         return $relatedBrands;

@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation;
 
+use ArrayObject;
 use FondOfSpryker\Zed\BrandCompany\Persistence\BrandCompanyRepositoryInterface;
 use Generated\Shared\Transfer\BrandTransfer;
 use Generated\Shared\Transfer\CompanyBrandRelationTransfer;
@@ -48,7 +49,7 @@ class CompanyBrandRelationReader implements CompanyBrandRelationReaderInterface
      *
      * @return int[]
      */
-    protected function getIdBrands(array $relatedBrands): array
+    protected function getIdBrands(ArrayObject $relatedBrands): array
     {
         return array_map(function (BrandTransfer $brandTransfer) {
             return $brandTransfer->getIdBrand();
