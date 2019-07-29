@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\BrandCompany\Persistence;
 
+use Orm\Zed\BrandCompany\Persistence\FosBrandCompany;
 use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 
 /**
@@ -21,7 +22,7 @@ class BrandCompanyEntityManager extends AbstractEntityManager implements BrandCo
     public function addBrands(array $idBrands, $idCompany): void
     {
         foreach ($idBrands as $idBrand) {
-            $companyBrandEntityTransfer = new SpyBrandCompany();
+            $companyBrandEntityTransfer = new FosBrandCompany();
             $companyBrandEntityTransfer->setFkCompany($idCompany)
                 ->setFkBrand($idBrand)
                 ->save();
