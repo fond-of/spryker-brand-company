@@ -34,7 +34,7 @@ class CompanyBrandRelationWriter implements CompanyBrandRelationWriterInterface
      *
      * @return void
      */
-    public function saveCompanyBrandRelation(CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void
+    public function save(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void
     {
         if ($companyBrandRelationTransfer === null) {
             return;
@@ -42,7 +42,7 @@ class CompanyBrandRelationWriter implements CompanyBrandRelationWriterInterface
 
         $companyBrandRelationTransfer->requireIdCompany();
         $currentIdBrands = $this->getIdBrandsByIdCompany($companyBrandRelationTransfer->getIdCompany());
-        $requestedIdBrands = $this->findBrandRelationIdBrands($companyBrandRelationTransfer);
+        $requestedIdBrands = $this->findCompanyBrandRelationIdBrands($companyBrandRelationTransfer);
 
         if (count($requestedIdBrands) === 0) {
             return;
@@ -50,7 +50,6 @@ class CompanyBrandRelationWriter implements CompanyBrandRelationWriterInterface
 
         $saveIdBrands = array_diff($requestedIdBrands, $currentIdBrands);
         $deleteIdBrands = array_diff($currentIdBrands, $requestedIdBrands);
-
         $this->brandCompanyEntityManager->addBrands($saveIdBrands, $companyBrandRelationTransfer->getIdCompany());
         $this->brandCompanyEntityManager->removeBrands($deleteIdBrands, $companyBrandRelationTransfer->getIdCompany());
     }
@@ -60,21 +59,17 @@ class CompanyBrandRelationWriter implements CompanyBrandRelationWriterInterface
      *
      * @return int[]
      */
-    protected function findStoreRelationIdStores(CompanyBrandRelationTransfer $companyBrandRelationTransfer): array
+    protected function findCompanyBrandRelationIdBrands(CompanyBrandRelationTransfer $companyBrandRelationTransfer): array
     {
-        if ($companyBrandRelationTransfer->getIdBrands() === null) {
-            return [];
-        }
-
         return $companyBrandRelationTransfer->getIdBrands();
     }
 
     /**
      * @param int $idCompany
      *
-     * @return array
+     * @return int[]
      */
-    protected function getIdBrandsByIdCompany($idCompany): array
+    protected function getIdBrandsByIdCompany(int $idCompany): array
     {
         $companyBrandRelationTransfer = new CompanyBrandRelationTransfer();
         $companyBrandRelationTransfer->setIdCompany($idCompany);

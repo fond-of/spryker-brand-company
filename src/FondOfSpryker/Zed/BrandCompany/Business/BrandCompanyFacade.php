@@ -20,7 +20,7 @@ class BrandCompanyFacade extends AbstractFacade implements BrandCompanyFacadeInt
     public function saveCompanyBrandRelation(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void
     {
         $this->getFactory()->createCompanyBrandRelationWriter()
-            ->saveCompanyBrandRelation($companyBrandRelationTransfer);
+            ->save($companyBrandRelationTransfer);
     }
 
     /**

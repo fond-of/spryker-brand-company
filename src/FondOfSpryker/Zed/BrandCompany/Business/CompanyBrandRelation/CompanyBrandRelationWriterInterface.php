@@ -11,5 +11,5 @@ interface CompanyBrandRelationWriterInterface
      *
      * @return void
      */
-    public function saveCompanyBrandRelation(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void;
+    public function save(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void;
 }
