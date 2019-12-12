@@ -11,30 +11,32 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 class BrandCompanyEntityManager extends AbstractEntityManager implements BrandCompanyEntityManagerInterface
 {
     /**
-     * Specification:
-     * - Adds new relations between brands and company
+     * {@inheritDoc}
      *
      * @param array $idBrands
      * @param int $idCompany
+     *
+     * @throws
      *
      * @return void
      */
     public function addBrands(array $idBrands, $idCompany): void
     {
         foreach ($idBrands as $idBrand) {
-            $companyBrandEntityTransfer = new FosBrandCompany();
-            $companyBrandEntityTransfer->setFkCompany($idCompany)
+            $companyBrandEntity = new FosBrandCompany();
+            $companyBrandEntity->setFkCompany($idCompany)
                 ->setFkBrand($idBrand)
                 ->save();
         }
     }
 
     /**
-     * Specification:
-     * - Remove relations between brands and company
+     * {@inheritDoc}
      *
      * @param array $idBrands
      * @param int $idCompany
+     *
+     * @throws
      *
      * @return void
      */

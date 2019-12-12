@@ -7,13 +7,12 @@ use ArrayObject;
 interface BrandCompanyRepositoryInterface
 {
     /**
-     * {@inheritdoc}
-     *
-     * @api
+     * Specification:
+     * - Retrieve brands related to company
      *
      * @param int $idCompany
      *
-     * @return \Generated\Shared\Transfer\BrandTransfer[]|\ArrayObject
+     * @return \ArrayObject|\Generated\Shared\Transfer\BrandTransfer[]
      */
-    public function getRelatedBrandsByCompanyId(int $idCompany): ArrayObject;
+    public function getRelatedBrandsByIdCompany(int $idCompany): ArrayObject;
 }

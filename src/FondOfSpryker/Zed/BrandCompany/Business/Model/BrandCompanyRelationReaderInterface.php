@@ -1,10 +1,10 @@
 <?php
 
-namespace FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation;
+namespace FondOfSpryker\Zed\BrandCompany\Business\Model;
 
 use Generated\Shared\Transfer\CompanyBrandRelationTransfer;
 
-interface CompanyBrandRelationReaderInterface
+interface BrandCompanyRelationReaderInterface
 {
     /**
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer

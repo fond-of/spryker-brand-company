@@ -7,6 +7,11 @@ use Generated\Shared\Transfer\CompanyBrandRelationTransfer;
 interface BrandCompanyFacadeInterface
 {
     /**
+     * Specification:
+     *  - Retrieves Company Brand relations
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
@@ -16,6 +21,11 @@ interface BrandCompanyFacadeInterface
     ): CompanyBrandRelationTransfer;
 
     /**
+     * Specification:
+     *  - Save company Brand relations
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer|null $companyBrandRelationTransfer
      *
      * @return void

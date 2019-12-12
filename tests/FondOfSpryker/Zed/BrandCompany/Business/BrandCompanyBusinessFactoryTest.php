@@ -3,7 +3,7 @@
 namespace FondOfSpryker\Zed\BrandCompany\Business;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\CompanyBrandRelationWriter;
+use FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\BrandCompanyRelationWriter;
 use FondOfSpryker\Zed\BrandCompany\Persistence\BrandCompanyEntityManager;
 use FondOfSpryker\Zed\BrandCompany\Persistence\BrandCompanyRepository;
 use Spryker\Zed\Kernel\Container;
@@ -64,6 +64,6 @@ class BrandCompanyBusinessFactoryTest extends Unit
         $companyBrandRelationWriter = $this->brandCompanyBusinessFactory->createCompanyBrandRelationWriter();
 
         $this->assertNotNull($companyBrandRelationWriter);
-        $this->assertInstanceOf(CompanyBrandRelationWriter::class, $companyBrandRelationWriter);
+        $this->assertInstanceOf(BrandCompanyRelationWriter::class, $companyBrandRelationWriter);
     }
 }

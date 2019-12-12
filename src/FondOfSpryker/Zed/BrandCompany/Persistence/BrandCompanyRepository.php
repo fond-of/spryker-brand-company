@@ -12,9 +12,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 class BrandCompanyRepository extends AbstractRepository implements BrandCompanyRepositoryInterface
 {
     /**
-     * {@inheritdoc}
-     *
-     * @api
+     * {@inheritDoc}
      *
      * @param int $idCompany
      *
@@ -22,7 +20,7 @@ class BrandCompanyRepository extends AbstractRepository implements BrandCompanyR
      *
      * @return \ArrayObject|\Generated\Shared\Transfer\BrandTransfer[]
      */
-    public function getRelatedBrandsByCompanyId(int $idCompany): ArrayObject
+    public function getRelatedBrandsByIdCompany(int $idCompany): ArrayObject
     {
         $brandCompanyEntities = $this->getFactory()
             ->createBrandCompanyQuery()

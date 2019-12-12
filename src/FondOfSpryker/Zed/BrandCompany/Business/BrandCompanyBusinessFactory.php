@@ -2,10 +2,10 @@
 
 namespace FondOfSpryker\Zed\BrandCompany\Business;
 
-use FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\CompanyBrandRelationReader;
-use FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\CompanyBrandRelationReaderInterface;
-use FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\CompanyBrandRelationWriter;
-use FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\CompanyBrandRelationWriterInterface;
+use FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationReader;
+use FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationReaderInterface;
+use FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationWriter;
+use FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationWriterInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
@@ -15,22 +15,22 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 class BrandCompanyBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\CompanyBrandRelationWriterInterface
+     * @return \FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationWriterInterface
      */
-    public function createCompanyBrandRelationWriter(): CompanyBrandRelationWriterInterface
+    public function createBrandCompanyRelationWriter(): BrandCompanyRelationWriterInterface
     {
-        return new CompanyBrandRelationWriter(
-            $this->createCompanyBrandRelationReader(),
+        return new BrandCompanyRelationWriter(
+            $this->createBrandCompanyRelationReader(),
             $this->getEntityManager()
         );
     }
 
     /**
-     * @return \FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\CompanyBrandRelationReaderInterface
+     * @return \FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationReaderInterface
      */
-    public function createCompanyBrandRelationReader(): CompanyBrandRelationReaderInterface
+    public function createBrandCompanyRelationReader(): BrandCompanyRelationReaderInterface
     {
-        return new CompanyBrandRelationReader(
+        return new BrandCompanyRelationReader(
             $this->getRepository()
         );
     }

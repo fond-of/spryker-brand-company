@@ -1,13 +1,13 @@
 <?php
 
-namespace FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation;
+namespace FondOfSpryker\Zed\BrandCompany\Business\Model;
 
 use ArrayObject;
 use FondOfSpryker\Zed\BrandCompany\Persistence\BrandCompanyRepositoryInterface;
 use Generated\Shared\Transfer\BrandTransfer;
 use Generated\Shared\Transfer\CompanyBrandRelationTransfer;
 
-class CompanyBrandRelationReader implements CompanyBrandRelationReaderInterface
+class BrandCompanyRelationReader implements BrandCompanyRelationReaderInterface
 {
     /**
      * @var \FondOfSpryker\Zed\BrandCompany\Persistence\BrandCompanyRepositoryInterface
@@ -31,7 +31,7 @@ class CompanyBrandRelationReader implements CompanyBrandRelationReaderInterface
         CompanyBrandRelationTransfer $companyBrandRelationTransfer
     ): CompanyBrandRelationTransfer {
         $companyBrandRelationTransfer->requireIdCompany();
-        $relatedBrands = $this->brandCompanyRepository->getRelatedBrandsByCompanyId(
+        $relatedBrands = $this->brandCompanyRepository->getRelatedBrandsByIdCompany(
             $companyBrandRelationTransfer->getIdCompany()
         );
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation;
+namespace FondOfSpryker\Zed\BrandCompany\Business\Model;
 
 use FondOfSpryker\Zed\BrandCompany\Persistence\BrandCompanyEntityManagerInterface;
 use Generated\Shared\Transfer\CompanyBrandRelationTransfer;
 
-class CompanyBrandRelationWriter implements CompanyBrandRelationWriterInterface
+class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
 {
     /**
-     * @var \FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\CompanyBrandRelationReaderInterface
+     * @var \FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationReaderInterface
      */
     protected $companyBrandRelationReader;
 
@@ -18,14 +18,14 @@ class CompanyBrandRelationWriter implements CompanyBrandRelationWriterInterface
     protected $brandCompanyEntityManager;
 
     /**
-     * @param \FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\CompanyBrandRelationReaderInterface $companyBrandRelationReader
+     * @param \FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationReaderInterface $brandCompanyRelationReader
      * @param \FondOfSpryker\Zed\BrandCompany\Persistence\BrandCompanyEntityManagerInterface $brandCompanyEntityManager
      */
     public function __construct(
-        CompanyBrandRelationReaderInterface $companyBrandRelationReader,
+        BrandCompanyRelationReaderInterface $brandCompanyRelationReader,
         BrandCompanyEntityManagerInterface $brandCompanyEntityManager
     ) {
-        $this->companyBrandRelationReader = $companyBrandRelationReader;
+        $this->companyBrandRelationReader = $brandCompanyRelationReader;
         $this->brandCompanyEntityManager = $brandCompanyEntityManager;
     }
 
@@ -34,7 +34,7 @@ class CompanyBrandRelationWriter implements CompanyBrandRelationWriterInterface
      *
      * @return void
      */
-    public function save(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void
+    public function saveCompanyBrandRelation(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void
     {
         if ($companyBrandRelationTransfer === null) {
             return;

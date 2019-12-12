@@ -13,17 +13,25 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class BrandCompanyFacade extends AbstractFacade implements BrandCompanyFacadeInterface
 {
     /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer|null $companyBrandRelationTransfer
      *
      * @return void
      */
     public function saveCompanyBrandRelation(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void
     {
-        $this->getFactory()->createCompanyBrandRelationWriter()
-            ->save($companyBrandRelationTransfer);
+        $this->getFactory()->createBrandCompanyRelationWriter()
+            ->saveCompanyBrandRelation($companyBrandRelationTransfer);
     }
 
     /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
@@ -31,7 +39,7 @@ class BrandCompanyFacade extends AbstractFacade implements BrandCompanyFacadeInt
     public function getCompanyBrandRelation(
         CompanyBrandRelationTransfer $companyBrandRelationTransfer
     ): CompanyBrandRelationTransfer {
-        return $this->getFactory()->createCompanyBrandRelationReader()
+        return $this->getFactory()->createBrandCompanyRelationReader()
             ->getCompanyBrandRelation($companyBrandRelationTransfer);
     }
 }
