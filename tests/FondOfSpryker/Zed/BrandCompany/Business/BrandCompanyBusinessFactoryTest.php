@@ -3,7 +3,8 @@
 namespace FondOfSpryker\Zed\BrandCompany\Business;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Zed\BrandCompany\Business\CompanyBrandRelation\BrandCompanyRelationWriter;
+use FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationReader;
+use FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationWriter;
 use FondOfSpryker\Zed\BrandCompany\Persistence\BrandCompanyEntityManager;
 use FondOfSpryker\Zed\BrandCompany\Persistence\BrandCompanyRepository;
 use Spryker\Zed\Kernel\Container;
@@ -59,11 +60,22 @@ class BrandCompanyBusinessFactoryTest extends Unit
     /**
      * @return void
      */
-    public function testCreateCompanyBrandRelationWriter(): void
+    public function testCreateBrandCompanyRelationWriter(): void
     {
-        $companyBrandRelationWriter = $this->brandCompanyBusinessFactory->createCompanyBrandRelationWriter();
+        $brandCompanyRelationWriter = $this->brandCompanyBusinessFactory->createBrandCompanyRelationWriter();
 
-        $this->assertNotNull($companyBrandRelationWriter);
-        $this->assertInstanceOf(BrandCompanyRelationWriter::class, $companyBrandRelationWriter);
+        $this->assertNotNull($brandCompanyRelationWriter);
+        $this->assertInstanceOf(BrandCompanyRelationWriter::class, $brandCompanyRelationWriter);
+    }
+
+    /**
+     * @return void
+     */
+    public function testCreateBrandCompanyRelationReader(): void
+    {
+        $brandCompanyRelationReader = $this->brandCompanyBusinessFactory->createBrandCompanyRelationReader();
+
+        $this->assertNotNull($brandCompanyRelationReader);
+        $this->assertInstanceOf(BrandCompanyRelationReader::class, $brandCompanyRelationReader);
     }
 }
