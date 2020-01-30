@@ -2,6 +2,8 @@
 
 namespace FondOfSpryker\Zed\BrandCompany\Business;
 
+use Generated\Shared\Transfer\BrandResponseTransfer;
+use Generated\Shared\Transfer\BrandTransfer;
 use Generated\Shared\Transfer\CompanyBrandRelationTransfer;
 
 interface BrandCompanyFacadeInterface
@@ -31,4 +33,37 @@ interface BrandCompanyFacadeInterface
      * @return void
      */
     public function saveCompanyBrandRelation(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void;
+
+    /**
+     * Specification:
+     * - Finds companies by brand.
+     * - Expands brand transfer with BrandCompanyRelationTransfer
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
+     *
+     * @return \Generated\Shared\Transfer\BrandTransfer
+     */
+    public function expandBrandTransferWithCompanyRelation(BrandTransfer $brandTransfer): BrandTransfer;
+
+    /**
+     * Specification:
+     * - Save Brand Company relation using BrandTransfer.
+     *
+     * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
+     *
+     * @return \Generated\Shared\Transfer\BrandTransfer
+     */
+    public function saveBrandCompanyRelation(BrandTransfer $brandTransfer): BrandTransfer;
+
+    /**
+     * Specification:
+     * - Delete Brand Company relation using BrandTransfer.
+     *
+     * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
+     *
+     * @return \Generated\Shared\Transfer\BrandResponseTransfer
+     */
+    public function deleteBrandCompanyRelation(BrandTransfer $brandTransfer): BrandResponseTransfer;
 }

@@ -15,4 +15,11 @@ interface BrandCompanyRepositoryInterface
      * @return \ArrayObject|\Generated\Shared\Transfer\BrandTransfer[]
      */
     public function getRelatedBrandsByIdCompany(int $idCompany): ArrayObject;
+
+    /**
+     * @param int $idBrand
+     *
+     * @return int[]
+     */
+    public function getRelatedCompanyIdsByIdBrand(int $idBrand): array;
 }

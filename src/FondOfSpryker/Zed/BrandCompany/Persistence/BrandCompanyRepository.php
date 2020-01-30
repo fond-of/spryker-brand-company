@@ -4,6 +4,7 @@ namespace FondOfSpryker\Zed\BrandCompany\Persistence;
 
 use ArrayObject;
 use Generated\Shared\Transfer\BrandTransfer;
+use Orm\Zed\BrandCompany\Persistence\Map\FosBrandCompanyTableMap;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 
 /**
@@ -39,5 +40,21 @@ class BrandCompanyRepository extends AbstractRepository implements BrandCompanyR
         }
 
         return $relatedBrands;
+    }
+
+    /**
+     * @param int $idBrand
+     *
+     * @return int[]
+     */
+    public function getRelatedCompanyIdsByIdBrand(int $idBrand): array
+    {
+        $brandCompanyQuery = $this->getFactory()
+            ->createBrandCompanyQuery()
+            ->select(FosBrandCompanyTableMap::COL_FK_COMPANY);
+
+        return $brandCompanyQuery
+            ->findByFkBrand($idBrand)
+            ->toArray();
     }
 }

@@ -3,6 +3,10 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
 
+    <transfer name="Brand">
+        <property name="brandCompanyRelation" type="BrandCompanyRelation"/>
+    </transfer>
+
     <transfer name="Company">
         <property name="idCompany" type="int"/>
         <property name="brandRelation" type="CompanyBrandRelation"/>
@@ -12,6 +16,11 @@
         <property name="idCompany" type="int"/>
         <property name="idBrands" type="int[]" singular="idBrands"/>
         <property name="brands" type="Brand[]" singular="brands"/>
+    </transfer>
+
+    <transfer name="BrandCompanyRelation">
+        <property name="idBrand" type="int"/>
+        <property name="companyIds" type="int[]"/>
     </transfer>
 
     <transfer name="Brand">

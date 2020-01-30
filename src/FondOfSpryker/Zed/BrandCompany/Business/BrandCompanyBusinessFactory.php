@@ -2,6 +2,8 @@
 
 namespace FondOfSpryker\Zed\BrandCompany\Business;
 
+use FondOfSpryker\Zed\BrandCompany\Business\Expander\BrandExpander;
+use FondOfSpryker\Zed\BrandCompany\Business\Expander\BrandExpanderInterface;
 use FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationReader;
 use FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationReaderInterface;
 use FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationWriter;
@@ -33,5 +35,13 @@ class BrandCompanyBusinessFactory extends AbstractBusinessFactory
         return new BrandCompanyRelationReader(
             $this->getRepository()
         );
+    }
+
+    /**
+     * @return \FondOfSpryker\Zed\BrandCompany\Business\Expander\BrandExpanderInterface
+     */
+    public function createBrandExpander(): BrandExpanderInterface
+    {
+        return new BrandExpander($this->createBrandCompanyRelationReader());
     }
 }
