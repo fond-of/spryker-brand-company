@@ -38,7 +38,7 @@ class BrandExpander implements BrandExpanderInterface
 
     /**
      * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
-     * @param \Generated\Shared\Transfer\BrandCustomerRelationTransfer $brandCustomerRelationTransfer
+     * @param \Generated\Shared\Transfer\BrandCompanyRelationTransfer $brandCompanyRelationTransfer
      *
      * @return void
      */
