@@ -14,8 +14,8 @@
 
     <transfer name="CompanyBrandRelation">
         <property name="idCompany" type="int"/>
-        <property name="idBrands" type="int[]" singular="idBrands"/>
-        <property name="brands" type="Brand[]" singular="brands"/>
+        <property name="idBrands" type="int[]" singular="idBrand"/>
+        <property name="brands" type="Brand[]" singular="brand"/>
     </transfer>
 
     <transfer name="BrandCompanyRelation">
