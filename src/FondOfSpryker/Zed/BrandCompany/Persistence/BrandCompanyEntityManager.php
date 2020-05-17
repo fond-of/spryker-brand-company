@@ -17,8 +17,6 @@ class BrandCompanyEntityManager extends AbstractEntityManager implements BrandCo
      * @param array $idBrands
      * @param int $idCompany
      *
-     * @throws
-     *
      * @return void
      */
     public function addBrands(array $idBrands, $idCompany): void
@@ -36,8 +34,6 @@ class BrandCompanyEntityManager extends AbstractEntityManager implements BrandCo
      *
      * @param array $idBrands
      * @param int $idCompany
-     *
-     * @throws
      *
      * @return void
      */

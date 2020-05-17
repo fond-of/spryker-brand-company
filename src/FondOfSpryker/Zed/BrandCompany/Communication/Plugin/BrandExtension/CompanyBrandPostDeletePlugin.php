@@ -9,17 +9,17 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \FondOfSpryker\Zed\BrandCompany\Business\BrandCompanyFacadeInterface getFacade()
- * @method \FondOfSpryker\Zed\BrandCompany\BrandCompanyConfig getConfig()
  */
 class CompanyBrandPostDeletePlugin extends AbstractPlugin implements BrandPostDeletePluginInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
      * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
-     * @return \Generated\Shared\Transfer\BrandTransfer
+     *
+     * @return \Generated\Shared\Transfer\BrandResponseTransfer
      */
     public function execute(BrandTransfer $brandTransfer): BrandResponseTransfer
     {

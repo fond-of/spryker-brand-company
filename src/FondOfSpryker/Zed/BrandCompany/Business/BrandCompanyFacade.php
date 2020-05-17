@@ -63,6 +63,7 @@ class BrandCompanyFacade extends AbstractFacade implements BrandCompanyFacadeInt
      * @api
      *
      * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
+     *
      * @return \Generated\Shared\Transfer\BrandTransfer
      */
     public function saveBrandCompanyRelation(BrandTransfer $brandTransfer): BrandTransfer
@@ -72,13 +73,13 @@ class BrandCompanyFacade extends AbstractFacade implements BrandCompanyFacadeInt
     }
 
     /**
-     *
      * {@inheritDoc}
      *
      * @api
      *
      * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
-     * @return \FondOfSpryker\Zed\BrandCompany\Business\BrandResponseTransfer
+     *
+     * @return \Generated\Shared\Transfer\BrandResponseTransfer
      */
     public function deleteBrandCompanyRelation(BrandTransfer $brandTransfer): BrandResponseTransfer
     {

@@ -17,8 +17,6 @@ class BrandCompanyRepository extends AbstractRepository implements BrandCompanyR
      *
      * @param int $idCompany
      *
-     * @throws
-     *
      * @return \ArrayObject|\Generated\Shared\Transfer\BrandTransfer[]
      */
     public function getRelatedBrandsByIdCompany(int $idCompany): ArrayObject
