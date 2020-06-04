@@ -124,6 +124,7 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
 
     /**
      * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
+     * @param \Generated\Shared\Transfer\BrandResponseTransfer $brandResponseTransfer
      *
      * @return \Generated\Shared\Transfer\BrandResponseTransfer
      */
@@ -131,7 +132,6 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
         BrandTransfer $brandTransfer,
         BrandResponseTransfer $brandResponseTransfer
     ): BrandResponseTransfer {
-
         $this->brandCompanyEntityManager->deleteBrandCompanyRelation($brandTransfer);
 
         $brandResponseTransfer->addMessage(

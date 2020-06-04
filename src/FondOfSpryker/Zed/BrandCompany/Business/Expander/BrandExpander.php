@@ -13,6 +13,9 @@ class BrandExpander implements BrandExpanderInterface
      */
     protected $brandCompanyRelationReader;
 
+    /**
+     * @param \FondOfSpryker\Zed\BrandCompany\Business\Model\BrandCompanyRelationReaderInterface $brandCompanyRelationReader
+     */
     public function __construct(BrandCompanyRelationReaderInterface $brandCompanyRelationReader)
     {
         $this->brandCompanyRelationReader = $brandCompanyRelationReader;

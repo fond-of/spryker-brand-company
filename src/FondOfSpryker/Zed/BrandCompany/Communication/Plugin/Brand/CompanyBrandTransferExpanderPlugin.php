@@ -8,12 +8,11 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \FondOfSpryker\Zed\BrandCompany\Business\BrandCompanyFacadeInterface getFacade()
- * @method \FondOfSpryker\Zed\BrandCompany\BrandCompanyConfig getConfig()
  */
 class CompanyBrandTransferExpanderPlugin extends AbstractPlugin implements BrandTransferExpanderPluginInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *

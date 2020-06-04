@@ -90,6 +90,8 @@ class BrandCompanyEntityManager extends AbstractEntityManager implements BrandCo
     }
 
     /**
+     * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
+     *
      * @return void
      */
     public function deleteBrandCompanyRelation(BrandTransfer $brandTransfer): void
