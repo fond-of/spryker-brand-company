@@ -9,11 +9,13 @@ use Generated\Shared\Transfer\CompanyBrandRelationTransfer;
 interface BrandCompanyRelationWriterInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer|null $companyBrandRelationTransfer
+     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
      */
-    public function saveCompanyBrandRelation(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void;
+    public function saveCompanyBrandRelation(
+        CompanyBrandRelationTransfer $companyBrandRelationTransfer
+    ): CompanyBrandRelationTransfer;
 
     /**
      * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer

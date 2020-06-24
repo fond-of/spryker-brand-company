@@ -19,13 +19,13 @@ class BrandCompanyFacade extends AbstractFacade implements BrandCompanyFacadeInt
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer|null $companyBrandRelationTransfer
-     *
-     * @return void
+     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
+     * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
      */
-    public function saveCompanyBrandRelation(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void
-    {
-        $this->getFactory()->createBrandCompanyRelationWriter()
+    public function saveCompanyBrandRelation(
+        CompanyBrandRelationTransfer $companyBrandRelationTransfer
+    ): CompanyBrandRelationTransfer {
+        return $this->getFactory()->createBrandCompanyRelationWriter()
             ->saveCompanyBrandRelation($companyBrandRelationTransfer);
     }
 
@@ -85,5 +85,20 @@ class BrandCompanyFacade extends AbstractFacade implements BrandCompanyFacadeInt
     {
         return $this->getFactory()->createBrandCompanyRelationWriter()
             ->deleteBrandCompanyRelation($brandTransfer);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
+     * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
+     */
+    public function findCompanyBrandRelationByIdCompany(
+        CompanyBrandRelationTransfer $companyBrandRelationTransfer
+    ): CompanyBrandRelationTransfer {
+        return $this->getFactory()->createBrandCompanyRelationReader()
+            ->getCompanyBrandRelation($companyBrandRelationTransfer);
     }
 }

@@ -39,28 +39,48 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer|null $companyBrandRelationTransfer
+     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
      */
-    public function saveCompanyBrandRelation(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void
-    {
-        if ($companyBrandRelationTransfer === null) {
-            return;
-        }
+    public function saveCompanyBrandRelation(
+        CompanyBrandRelationTransfer $companyBrandRelationTransfer
+    ): CompanyBrandRelationTransfer {
+        return $this->getTransactionHandler()->handleTransaction(function () use ($companyBrandRelationTransfer) {
+            return $this->executeSaveCompanyBrandRelationTransaction($companyBrandRelationTransfer);
+        });
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
+     */
+    public function executeSaveCompanyBrandRelationTransaction(
+        CompanyBrandRelationTransfer $companyBrandRelationTransfer
+    ): CompanyBrandRelationTransfer {
 
         $companyBrandRelationTransfer->requireIdCompany();
-        $currentIdBrands = $this->getIdBrandsByIdCompany($companyBrandRelationTransfer->getIdCompany());
-        $requestedIdBrands = $this->findCompanyBrandRelationIdBrands($companyBrandRelationTransfer);
 
-        if (count($requestedIdBrands) === 0) {
-            return;
+        if (count($companyBrandRelationTransfer->getIdBrands()) === 0) {
+            return $companyBrandRelationTransfer;
         }
 
-        $saveIdBrands = array_diff($requestedIdBrands, $currentIdBrands);
-        $deleteIdBrands = array_diff($currentIdBrands, $requestedIdBrands);
-        $this->brandCompanyEntityManager->addBrands($saveIdBrands, $companyBrandRelationTransfer->getIdCompany());
-        $this->brandCompanyEntityManager->removeBrands($deleteIdBrands, $companyBrandRelationTransfer->getIdCompany());
+        $idCompany = $companyBrandRelationTransfer->getIdCompany();
+        $requestedBrandIds = $this->getRequestedBrandIds($companyBrandRelationTransfer);
+        $currentBrandIds = $this->getRelatedBrandIds($companyBrandRelationTransfer);
+
+        $saveCompanyIds = array_diff($requestedBrandIds, $currentBrandIds);
+        $deleteCompanyIds = array_diff($currentBrandIds, $requestedBrandIds);
+
+        $this->brandCompanyEntityManager->addBrands($saveCompanyIds, $idCompany);
+        $this->brandCompanyEntityManager->removeBrands($deleteCompanyIds, $idCompany);
+
+        $companyBrandRelationTransfer->setIdBrands(
+            $this->getRelatedBrandIds($companyBrandRelationTransfer)
+        );
+
+        return $companyBrandRelationTransfer;
     }
 
     /**
@@ -178,28 +198,30 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
      *
      * @return int[]
      */
-    protected function findCompanyBrandRelationIdBrands(CompanyBrandRelationTransfer $companyBrandRelationTransfer): array
-    {
-        return $companyBrandRelationTransfer->getIdBrands();
+    protected function getRelatedBrandIds(
+        CompanyBrandRelationTransfer $companyBrandRelationTransfer
+    ): array {
+        $currentCompanyBrandRelationTransfer = $this->brandCompanyRelationReader->getCompanyBrandRelation($companyBrandRelationTransfer);
+
+        if (!$currentCompanyBrandRelationTransfer->getIdBrands()) {
+            return [];
+        }
+
+        return $currentCompanyBrandRelationTransfer->getIdBrands();
     }
 
     /**
-     * @param int $idCompany
+     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
      *
      * @return int[]
      */
-    protected function getIdBrandsByIdCompany(int $idCompany): array
-    {
-        $companyBrandRelationTransfer = new CompanyBrandRelationTransfer();
-        $companyBrandRelationTransfer->setIdCompany($idCompany);
-        $companyBrandRelations = $this->brandCompanyRelationReader->getCompanyBrandRelation($companyBrandRelationTransfer);
-
-        $idBrands = [];
-
-        foreach ($companyBrandRelations->getBrands() as $brand) {
-            $idBrands[] = $brand->getIdBrand();
+    protected function getRequestedBrandIds(
+        CompanyBrandRelationTransfer $companyBrandRelationTransfer
+    ): array {
+        if (!$companyBrandRelationTransfer->getIdBrands()) {
+            return [];
         }
 
-        return $idBrands;
+        return $companyBrandRelationTransfer->getIdBrands();
     }
 }
