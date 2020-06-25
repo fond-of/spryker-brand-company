@@ -28,11 +28,13 @@ interface BrandCompanyFacadeInterface
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer|null $companyBrandRelationTransfer
+     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
      */
-    public function saveCompanyBrandRelation(?CompanyBrandRelationTransfer $companyBrandRelationTransfer = null): void;
+    public function saveCompanyBrandRelation(
+        CompanyBrandRelationTransfer $companyBrandRelationTransfer
+    ): CompanyBrandRelationTransfer;
 
     /**
      * Specification:
@@ -66,4 +68,16 @@ interface BrandCompanyFacadeInterface
      * @return \Generated\Shared\Transfer\BrandResponseTransfer
      */
     public function deleteBrandCompanyRelation(BrandTransfer $brandTransfer): BrandResponseTransfer;
+
+    /**
+     * Specification:
+     * - find Company Brand relations using the company id
+     *
+     * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
+     */
+    public function findCompanyBrandRelationByIdCompany(
+        CompanyBrandRelationTransfer $companyBrandRelationTransfer
+    ): CompanyBrandRelationTransfer;
 }
