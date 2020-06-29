@@ -25,7 +25,7 @@ class CompanyBrandRelationPostSavePlugin extends AbstractPlugin implements Compa
     {
         $companyTransfer = $companyResponseTransfer->getCompanyTransfer();
 
-        if ($companyTransfer === null) {
+        if ($companyTransfer === null || $companyTransfer->getBrandRelation() === null) {
             return $companyResponseTransfer;
         }
 
