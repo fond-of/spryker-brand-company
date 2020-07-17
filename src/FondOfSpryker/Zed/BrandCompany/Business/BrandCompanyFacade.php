@@ -20,6 +20,7 @@ class BrandCompanyFacade extends AbstractFacade implements BrandCompanyFacadeInt
      * @api
      *
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
+     *
      * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
      */
     public function saveCompanyBrandRelation(
@@ -93,6 +94,7 @@ class BrandCompanyFacade extends AbstractFacade implements BrandCompanyFacadeInt
      * @api
      *
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
+     *
      * @return \Generated\Shared\Transfer\CompanyBrandRelationTransfer
      */
     public function findCompanyBrandRelationByIdCompany(

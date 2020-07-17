@@ -59,7 +59,6 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
     public function executeSaveCompanyBrandRelationTransaction(
         CompanyBrandRelationTransfer $companyBrandRelationTransfer
     ): CompanyBrandRelationTransfer {
-
         $companyBrandRelationTransfer->requireIdCompany();
 
         if (count($companyBrandRelationTransfer->getIdBrands()) === 0) {
