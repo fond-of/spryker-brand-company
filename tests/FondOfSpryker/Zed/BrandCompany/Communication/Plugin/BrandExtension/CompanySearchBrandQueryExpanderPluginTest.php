@@ -15,7 +15,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 class CompanySearchBrandQueryExpanderPluginTest extends Unit
 {
     /**
-     * @var \FondOfSpryker\Zed\BrandCompany\Communication\Plugin\BrandExtension\CompanyCustomerSearchBrandQueryExpanderPlugin
+     * @var \FondOfSpryker\Zed\BrandExtension\Dependency\Plugin\SearchBrandQueryExpanderPluginInterface
      */
     protected $plugin;
 
@@ -51,7 +51,7 @@ class CompanySearchBrandQueryExpanderPluginTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->plugin = new CompanyCustomerSearchBrandQueryExpanderPlugin();
+        $this->plugin = new CompanySearchBrandQueryExpanderPlugin();
         $this->plugin->setFacade($this->brandCompanyFacadeMock);
     }
 
@@ -120,14 +120,14 @@ class CompanySearchBrandQueryExpanderPluginTest extends Unit
         $this->queryJoinCollectionTransfer->expects($this->atLeastOnce())
             ->method('addQueryJoin')
             ->willReturnCallback(static function (QueryJoinTransfer $queryJoinTransfer) use ($self) {
-                static::assertSame($queryJoinTransfer->getJoinType(), Criteria::INNER_JOIN);
-                static::assertSame($queryJoinTransfer->getLeft(), [FosBrandTableMap::COL_ID_BRAND]);
-                static::assertSame($queryJoinTransfer->getRight(), [FosBrandCompanyTableMap::COL_FK_BRAND]);
-
-                $whereCondition = $queryJoinTransfer->getWhereConditions()[0];
+                $whereCondition = $queryJoinTransfer->getWhereConditions()->offsetGet(0);
                 static::assertSame($whereCondition->getValue(), 'value');
                 static::assertSame($whereCondition->getColumn(), FosBrandCompanyTableMap::COL_FK_COMPANY);
                 static::assertSame($whereCondition->getComparison(), Criteria::EQUAL);
+
+                static::assertSame($queryJoinTransfer->getJoinType(), Criteria::INNER_JOIN);
+                static::assertSame($queryJoinTransfer->getLeft(), [FosBrandTableMap::COL_ID_BRAND]);
+                static::assertSame($queryJoinTransfer->getRight(), [FosBrandCompanyTableMap::COL_FK_BRAND]);
 
                 return $self->queryJoinCollectionTransfer;
             });
