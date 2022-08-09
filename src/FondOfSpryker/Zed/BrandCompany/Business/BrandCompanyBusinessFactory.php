@@ -23,7 +23,7 @@ class BrandCompanyBusinessFactory extends AbstractBusinessFactory
     {
         return new BrandCompanyRelationWriter(
             $this->createBrandCompanyRelationReader(),
-            $this->getEntityManager()
+            $this->getEntityManager(),
         );
     }
 
@@ -33,7 +33,7 @@ class BrandCompanyBusinessFactory extends AbstractBusinessFactory
     public function createBrandCompanyRelationReader(): BrandCompanyRelationReaderInterface
     {
         return new BrandCompanyRelationReader(
-            $this->getRepository()
+            $this->getRepository(),
         );
     }
 

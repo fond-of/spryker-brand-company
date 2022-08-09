@@ -14,6 +14,9 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
 {
     use TransactionTrait;
 
+    /**
+     * @var string
+     */
     protected const MESSAGE_BRAND_DELETE_SUCCESS = 'Brand has been successfully removed.';
 
     /**
@@ -76,7 +79,7 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
         $this->brandCompanyEntityManager->removeBrands($deleteCompanyIds, $idCompany);
 
         $companyBrandRelationTransfer->setIdBrands(
-            $this->getRelatedBrandIds($companyBrandRelationTransfer)
+            $this->getRelatedBrandIds($companyBrandRelationTransfer),
         );
 
         return $companyBrandRelationTransfer;
@@ -119,7 +122,7 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
         $this->brandCompanyEntityManager->removeCompanyRelations($idBrand, $deleteCompanyIds);
 
         $brandCompanyRelationTransfer->setCompanyIds(
-            $this->getRelatedCompanyIds($brandCompanyRelationTransfer)
+            $this->getRelatedCompanyIds($brandCompanyRelationTransfer),
         );
 
         return $brandTransfer;
@@ -154,7 +157,7 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
         $this->brandCompanyEntityManager->deleteBrandCompanyRelation($brandTransfer);
 
         $brandResponseTransfer->addMessage(
-            (new MessageTransfer())->setValue(static::MESSAGE_BRAND_DELETE_SUCCESS)
+            (new MessageTransfer())->setValue(static::MESSAGE_BRAND_DELETE_SUCCESS),
         );
 
         return $brandResponseTransfer;
@@ -195,7 +198,7 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
     /**
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
      *
-     * @return int[]
+     * @return array<int>
      */
     protected function getRelatedBrandIds(
         CompanyBrandRelationTransfer $companyBrandRelationTransfer
@@ -212,7 +215,7 @@ class BrandCompanyRelationWriter implements BrandCompanyRelationWriterInterface
     /**
      * @param \Generated\Shared\Transfer\CompanyBrandRelationTransfer $companyBrandRelationTransfer
      *
-     * @return int[]
+     * @return array<int>
      */
     protected function getRequestedBrandIds(
         CompanyBrandRelationTransfer $companyBrandRelationTransfer

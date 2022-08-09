@@ -52,7 +52,7 @@ class BrandCompanyEntityManager extends AbstractEntityManager implements BrandCo
 
     /**
      * @param int $idBrand
-     * @param int[] $companyIds
+     * @param array<int> $companyIds
      *
      * @return void
      */
@@ -68,7 +68,7 @@ class BrandCompanyEntityManager extends AbstractEntityManager implements BrandCo
 
     /**
      * @param int $idBrand
-     * @param int[] $companyIds
+     * @param array<int> $companyIds
      *
      * @return void
      */

@@ -75,7 +75,7 @@ class CompanySearchBrandQueryExpanderPlugin extends AbstractPlugin implements Se
                 ->setJoinType(Criteria::INNER_JOIN)
                 ->setLeft([FosBrandTableMap::COL_ID_BRAND])
                 ->setRight([FosBrandCompanyTableMap::COL_FK_BRAND])
-                ->setWhereConditions(new ArrayObject($whereConditions))
+                ->setWhereConditions(new ArrayObject($whereConditions)),
         );
 
         return $queryJoinCollectionTransfer;

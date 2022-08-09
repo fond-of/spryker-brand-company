@@ -66,8 +66,8 @@ class CompanySearchBrandQueryExpanderPluginTest extends Unit
 
         $this->assertFalse(
             $this->plugin->isApplicable(
-                [$this->filterFieldTransferMock]
-            )
+                [$this->filterFieldTransferMock],
+            ),
         );
     }
 
@@ -82,8 +82,8 @@ class CompanySearchBrandQueryExpanderPluginTest extends Unit
 
         $this->assertTrue(
             $this->plugin->isApplicable(
-                [$this->filterFieldTransferMock]
-            )
+                [$this->filterFieldTransferMock],
+            ),
         );
     }
 
@@ -98,7 +98,7 @@ class CompanySearchBrandQueryExpanderPluginTest extends Unit
 
         $this->plugin->expand(
             [$this->filterFieldTransferMock],
-            $this->queryJoinCollectionTransfer
+            $this->queryJoinCollectionTransfer,
         );
     }
 
@@ -134,7 +134,7 @@ class CompanySearchBrandQueryExpanderPluginTest extends Unit
 
         $this->plugin->expand(
             [$this->filterFieldTransferMock],
-            $this->queryJoinCollectionTransfer
+            $this->queryJoinCollectionTransfer,
         );
     }
 }

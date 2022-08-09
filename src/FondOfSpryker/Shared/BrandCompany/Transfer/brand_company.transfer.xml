@@ -27,4 +27,12 @@
         <property name="idBrand" type="int"/>
     </transfer>
 
+    <transfer name="BrandResponse">
+        <property name="brand" type="Brand"/>
+        <property name="messages" type="Message[]" singular="message"/>
+    </transfer>
+
+    <transfer name="Message">
+        <property name="value" type="string"/>
+    </transfer>
 </transfers>
