@@ -75,7 +75,7 @@ class CompanyCustomerSearchBrandQueryExpanderPlugin extends AbstractPlugin imple
             (new QueryJoinTransfer())
                 ->setJoinType(Criteria::INNER_JOIN)
                 ->setLeft([FosBrandTableMap::COL_ID_BRAND])
-                ->setRight([FosBrandCompanyTableMap::COL_FK_BRAND])
+                ->setRight([FosBrandCompanyTableMap::COL_FK_BRAND]),
         );
 
         $queryJoinCollectionTransfer->addQueryJoin(
@@ -83,7 +83,7 @@ class CompanyCustomerSearchBrandQueryExpanderPlugin extends AbstractPlugin imple
                 ->setJoinType(Criteria::INNER_JOIN)
                 ->setLeft([FosBrandCompanyTableMap::COL_FK_COMPANY])
                 ->setRight([SpyCompanyUserTableMap::COL_FK_COMPANY])
-                ->setWhereConditions(new ArrayObject($whereConditions))
+                ->setWhereConditions(new ArrayObject($whereConditions)),
         );
 
         return $queryJoinCollectionTransfer;

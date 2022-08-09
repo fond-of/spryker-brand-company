@@ -17,7 +17,7 @@ class BrandCompanyRepository extends AbstractRepository implements BrandCompanyR
      *
      * @param int $idCompany
      *
-     * @return \ArrayObject|\Generated\Shared\Transfer\BrandTransfer[]
+     * @return \ArrayObject<\Generated\Shared\Transfer\BrandTransfer>
      */
     public function getRelatedBrandsByIdCompany(int $idCompany): ArrayObject
     {
@@ -43,7 +43,7 @@ class BrandCompanyRepository extends AbstractRepository implements BrandCompanyR
     /**
      * @param int $idBrand
      *
-     * @return int[]
+     * @return array<int>
      */
     public function getRelatedCompanyIdsByIdBrand(int $idBrand): array
     {
@@ -52,7 +52,8 @@ class BrandCompanyRepository extends AbstractRepository implements BrandCompanyR
             ->select(FosBrandCompanyTableMap::COL_FK_COMPANY);
 
         return $brandCompanyQuery
-            ->findByFkBrand($idBrand)
+            ->filterByFkBrand($idBrand)
+            ->find()
             ->toArray();
     }
 }

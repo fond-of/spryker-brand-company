@@ -68,8 +68,8 @@ class CompanyCustomerSearchBrandQueryExpanderPluginTest extends Unit
 
         $this->assertFalse(
             $this->plugin->isApplicable(
-                [$this->filterFieldTransferMock]
-            )
+                [$this->filterFieldTransferMock],
+            ),
         );
     }
 
@@ -84,8 +84,8 @@ class CompanyCustomerSearchBrandQueryExpanderPluginTest extends Unit
 
         $this->assertTrue(
             $this->plugin->isApplicable(
-                [$this->filterFieldTransferMock]
-            )
+                [$this->filterFieldTransferMock],
+            ),
         );
     }
 
@@ -100,13 +100,11 @@ class CompanyCustomerSearchBrandQueryExpanderPluginTest extends Unit
 
         $this->plugin->expand(
             [$this->filterFieldTransferMock],
-            $this->queryJoinCollectionTransfer
+            $this->queryJoinCollectionTransfer,
         );
     }
 
     /**
-     * @throws \Exception
-     *
      * @return void
      */
     public function testExpand(): void
@@ -124,7 +122,6 @@ class CompanyCustomerSearchBrandQueryExpanderPluginTest extends Unit
         $this->queryJoinCollectionTransfer->expects($this->atLeastOnce())
             ->method('addQueryJoin')
             ->willReturnCallback(static function (QueryJoinTransfer $queryJoinTransfer) use ($self) {
-
                 if ($queryJoinTransfer->getLeft() === [FosBrandTableMap::COL_ID_BRAND]) {
                     static::assertSame($queryJoinTransfer->getJoinType(), Criteria::INNER_JOIN);
                     static::assertSame($queryJoinTransfer->getLeft(), [FosBrandTableMap::COL_ID_BRAND]);
@@ -146,7 +143,7 @@ class CompanyCustomerSearchBrandQueryExpanderPluginTest extends Unit
 
         $this->plugin->expand(
             [$this->filterFieldTransferMock],
-            $this->queryJoinCollectionTransfer
+            $this->queryJoinCollectionTransfer,
         );
     }
 }

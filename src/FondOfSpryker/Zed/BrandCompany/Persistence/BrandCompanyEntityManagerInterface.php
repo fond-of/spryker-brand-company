@@ -30,7 +30,7 @@ interface BrandCompanyEntityManagerInterface
 
     /**
      * @param int $idBrand
-     * @param int[] $companyIds
+     * @param array<int> $companyIds
      *
      * @return void
      */
@@ -38,7 +38,7 @@ interface BrandCompanyEntityManagerInterface
 
     /**
      * @param int $idBrand
-     * @param int[] $companyIds
+     * @param array<int> $companyIds
      *
      * @return void
      */

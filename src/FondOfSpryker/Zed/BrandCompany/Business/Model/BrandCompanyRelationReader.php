@@ -33,7 +33,7 @@ class BrandCompanyRelationReader implements BrandCompanyRelationReaderInterface
     ): CompanyBrandRelationTransfer {
         $companyBrandRelationTransfer->requireIdCompany();
         $relatedBrands = $this->brandCompanyRepository->getRelatedBrandsByIdCompany(
-            $companyBrandRelationTransfer->getIdCompany()
+            $companyBrandRelationTransfer->getIdCompany(),
         );
 
         $idBrands = $this->getIdBrands($relatedBrands);
@@ -46,9 +46,9 @@ class BrandCompanyRelationReader implements BrandCompanyRelationReaderInterface
     }
 
     /**
-     * @param \ArrayObject|\Generated\Shared\Transfer\BrandTransfer[] $relatedBrands
+     * @param \ArrayObject<\Generated\Shared\Transfer\BrandTransfer> $relatedBrands
      *
-     * @return int[]
+     * @return array<int>
      */
     protected function getIdBrands(ArrayObject $relatedBrands): array
     {
